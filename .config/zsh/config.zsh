@@ -29,25 +29,25 @@ setopt prompt_subst
 
 # Show active Vim mode in PROMPT.
 function zle-line-init zle-keymap-select {
-    if [[ ${KEYMAP} == vicmd ]] ||
-        [[ $1 = 'block' ]]; then
+	if [[ ${KEYMAP} == vicmd ]] ||
+		[[ $1 = 'block' ]]; then
 
-        # Normal mode
-        vim_char="|"
+		# Normal mode
+		vim_char="|"
 
-    elif [[ ${KEYMAP} == main ]] ||
-        [[ ${KEYMAP} == viins ]] ||
-        [[ ${KEYMAP} = '' ]] ||
-        [[ $1 = 'beam' ]]; then
+	elif [[ ${KEYMAP} == main ]] ||
+		[[ ${KEYMAP} == viins ]] ||
+		[[ ${KEYMAP} = '' ]] ||
+		[[ $1 = 'beam' ]]; then
 
-        # Insert mode
-        vim_char=">" 
+		# Insert mode
+		vim_char=">"
 
-    fi
-    zle reset-prompt
+	fi
+	zle reset-prompt
 }
 zle -N zle-line-init
-zle -N zle-keymap-select 
+zle -N zle-keymap-select
 
 
 # Define the right prompt to consist of current dir and Vim mode character
@@ -73,7 +73,7 @@ zstyle ':vcs_info:git:*' formats '%F{153}%b%u%c'
 
 # This function gets run on every command
 precmd() {
-    vcs_info
+	vcs_info
 }
 
 RPROMPT='${vcs_info_msg_0_}'
