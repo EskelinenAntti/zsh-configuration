@@ -2,7 +2,7 @@
 # Autocomplete #
 ################
 
-autoload -U compinit
+autoload -Uz compinit
 compinit
 
 ################
@@ -78,13 +78,6 @@ precmd() {
 
 RPROMPT='${vcs_info_msg_0_}'
 
-###############
-# Zsh plugins #
-###############
-
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 #######################
 # Application configs #
 #######################
@@ -92,5 +85,11 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # FZF
 source <(fzf --zsh)
 # Skip Mac folders to avoid full disk access prompts
-export FZF_DEFAULT_OPTS="--walker-skip .git,node_modules,target,build,Library"
+ export FZF_DEFAULT_OPTS="--walker-skip .git,node_modules,target,build,Library"
+
+###############
+# Zsh plugins #
+###############
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
