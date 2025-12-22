@@ -1,11 +1,11 @@
-.PHONY: all install configure
+.PHONY: all dependencies configuration
 
-all: install configure
+all: dependencies configuration
 
-install:
+dependencies:
 	brew bundle
 
-configure:
+configuration:
 	stow . --target="${HOME}"
 	@if [ ! -e "${HOME}/.zshrc" ]; then \
 		cp ".zshrc" "${HOME}/.zshrc"; \
