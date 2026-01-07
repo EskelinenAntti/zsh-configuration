@@ -1,3 +1,13 @@
+if [ -d /home/linuxbrew/ ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+####################
+# General settings #
+####################
+export EDITOR=nvim
+export XDG_CONFIG_HOME="$HOME/.config"
+
 ################
 # Autocomplete #
 ################
@@ -85,7 +95,7 @@ RPROMPT='${vcs_info_msg_0_}'
 # FZF
 source <(fzf --zsh)
 # Skip Mac folders to avoid full disk access prompts
- export FZF_DEFAULT_OPTS="--walker-skip .git,node_modules,target,build,Library"
+export FZF_DEFAULT_OPTS="--walker-skip .git,node_modules,target,build,Library"
 
 ###############
 # Zsh plugins #
