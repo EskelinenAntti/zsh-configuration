@@ -1,17 +1,21 @@
-if [ -d /home/linuxbrew/ ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
 ####################
 # General settings #
 ####################
-export EDITOR=nvim
 export XDG_CONFIG_HOME="$HOME/.config"
+HISTSIZE=100000
+SAVEHIST=100000
+
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
 
 ################
 # Autocomplete #
 ################
-
 autoload -Uz compinit
 compinit
 
