@@ -8,8 +8,4 @@ My personal Zsh setup.
 brew install EskelinenAntti/cli/zsh-configuration
 ```
 
-2. Add the following line to your `~/.zshrc`
-
-```shell
-source $(brew --prefix)/share/zsh-configuration/zsh-configuration.zsh
-```
+2. Follow the instructions printed by the `brew install` command.
