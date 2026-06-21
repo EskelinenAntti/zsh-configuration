@@ -102,5 +102,6 @@ export FZF_DEFAULT_OPTS="--walker-skip .git,node_modules,target,build,Library"
 ###############
 # Zsh plugins #
 ###############
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+brew_prefix="$(brew --prefix)"
+source "$brew_prefix/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$brew_prefix/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
