@@ -39,7 +39,7 @@ bindkey "^[[B" history-beginning-search-forward-end
 # Prompt #
 ##########
 
-# Needed to be able to show variables such as ${vcs_info_msg_0_} in the prompt
+# Needed to be able to show variables such as ${vcs_info_msg_0_} in the prompt.
 setopt prompt_subst
 
 # Show active Vim mode in PROMPT.
