@@ -2,6 +2,7 @@
 # General settings #
 ####################
 export XDG_CONFIG_HOME="$HOME/.config"
+HISTFILE="${HISTFILE:-$HOME/.zsh_history}"
 HISTSIZE=100000
 SAVEHIST=100000
 
@@ -43,16 +44,14 @@ setopt prompt_subst
 
 # Show active Vim mode in PROMPT.
 function zle-line-init zle-keymap-select {
-	if [[ ${KEYMAP} == vicmd ]] ||
-		[[ $1 = 'block' ]]; then
+	if [[ ${KEYMAP} == vicmd ]]; then
 
 		# Normal mode
 		vim_char="|"
 
 	elif [[ ${KEYMAP} == main ]] ||
 		[[ ${KEYMAP} == viins ]] ||
-		[[ ${KEYMAP} = '' ]] ||
-		[[ $1 = 'beam' ]]; then
+		[[ ${KEYMAP} == '' ]]; then
 
 		# Insert mode
 		vim_char=">"
@@ -64,7 +63,7 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 
 
-# Define the right prompt to consist of current dir and Vim mode character
+# Define the left prompt to consist of current dir and Vim mode character
 # (either '|' or '>').
 PROMPT=$'%F{white}%1~ %B%F{blue}${vim_char}%f%b '
 
@@ -83,12 +82,11 @@ zstyle ':vcs_info:*' check-for-changes true
 # are any uncommitted changes, and green '+' char if there are staged changes.
 zstyle ':vcs_info:*' unstagedstr '%F{red}+'
 zstyle ':vcs_info:*' stagedstr '%F{green}+'
-zstyle ':vcs_info:git:*' formats '%F{153}%b%u%c'
+zstyle ':vcs_info:git:*' formats '%F{153}%b%u%c%f'
 
-# This function gets run on every command
-precmd() {
-	vcs_info
-}
+# Update git information before displaying each prompt.
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd vcs_info
 
 RPROMPT='${vcs_info_msg_0_}'
 
@@ -106,4 +104,3 @@ export FZF_DEFAULT_OPTS="--walker-skip .git,node_modules,target,build,Library"
 ###############
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
