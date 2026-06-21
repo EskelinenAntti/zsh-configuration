@@ -75,7 +75,7 @@ PROMPT=$'%F{white}%1~ %B%F{blue}${vim_char}%f%b '
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 
-# Needed for showing staged and unstaged changes
+# Needed for showing staged and unstaged changes.
 zstyle ':vcs_info:*' check-for-changes true
 
 # Format the git info to consist of the current branch, red '+' char if there
