@@ -97,7 +97,7 @@ RPROMPT='${vcs_info_msg_0_}'
 # FZF
 source <(fzf --zsh)
 
-# Skip Mac folders to avoid full disk access prompts
+# Skip Mac folders to avoid full disk access prompts.
 export FZF_DEFAULT_OPTS="--walker-skip .git,node_modules,target,build,Library"
 
 ###############
