@@ -35,37 +35,15 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^[[A" history-beginning-search-backward-end
 bindkey "^[[B" history-beginning-search-forward-end
 
-##########
-# Prompt #
-##########
+###############
+# Left prompt #
+###############
 
 # Needed to be able to show variables such as ${vcs_info_msg_0_} in the prompt.
 setopt prompt_subst
 
-# Show active Vim mode in PROMPT.
-function zle-line-init zle-keymap-select {
-	if [[ ${KEYMAP} == vicmd ]]; then
-
-		# Normal mode
-		vim_char="|"
-
-	elif [[ ${KEYMAP} == main ]] ||
-		[[ ${KEYMAP} == viins ]] ||
-		[[ ${KEYMAP} == '' ]]; then
-
-		# Insert mode
-		vim_char=">"
-
-	fi
-	zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
-
-
-# Define the left prompt to consist of current dir and Vim mode character
-# (either '|' or '>').
-PROMPT=$'%F{white}%1~ %B%F{blue}${vim_char}%f%b '
+# Define the left prompt to consist of current dir and '>' character.
+PROMPT=$'%F{white}%1~ %B%F{blue}>%f%b '
 
 ################
 # Right prompt #
