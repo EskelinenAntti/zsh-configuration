@@ -20,54 +20,6 @@ setopt HIST_REDUCE_BLANKS
 autoload -Uz compinit
 compinit
 
-################
-# Key bindings #
-################
-
-# Enable Vim bindings.
-bindkey -v
-export KEYTIMEOUT=1
-
-# Lookup history by pressing up.
-autoload -U history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^[[A" history-beginning-search-backward-end
-bindkey "^[[B" history-beginning-search-forward-end
-
-###############
-# Left prompt #
-###############
-
-# Needed to be able to show variables such as ${vcs_info_msg_0_} in the prompt.
-setopt prompt_subst
-
-# Define the left prompt to consist of current dir and '>' character.
-PROMPT=$'%F{white}%1~ %B%F{blue}>%f%b '
-
-################
-# Right prompt #
-################
-
-# Show git information
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git
-
-# Needed for showing staged and unstaged changes.
-zstyle ':vcs_info:*' check-for-changes true
-
-# Format the git info to consist of the current branch, red '+' char if there
-# are any uncommitted changes, and green '+' char if there are staged changes.
-zstyle ':vcs_info:*' unstagedstr '%F{red}+'
-zstyle ':vcs_info:*' stagedstr '%F{green}+'
-zstyle ':vcs_info:git:*' formats '%F{153}%b%u%c%f'
-
-# Update git information before displaying each prompt.
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd vcs_info
-
-RPROMPT='${vcs_info_msg_0_}'
-
 #######################
 # Application configs #
 #######################
@@ -83,4 +35,5 @@ export FZF_DEFAULT_OPTS="--walker-skip .git,node_modules,target,build,Library"
 ###############
 brew_prefix="$(brew --prefix)"
 source "$brew_prefix/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$brew_prefix/share/zsh-prompt/zsh-prompt.zsh"
 source "$brew_prefix/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
